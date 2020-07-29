@@ -12,7 +12,7 @@ import { Container } from './styles';
 
 interface ToastProps {
   message: ToastMessage;
-  style: object;
+  style: Record<string, unknown>;
 }
 
 const icons = {
@@ -37,14 +37,15 @@ const Toast: React.FC<ToastProps> = ({ message, style }) => {
   return (
     <Container
       type={message.type}
-      hasDescription={!!message.description}
+      hasDescription={Number(!!message.description)}
       style={style}
     >
       {icons[message.type || 'info']}
 
       <div>
         <strong>{message.title}</strong>
-        {message.title && <p>Não foi possivel fazer login na aplicação</p>}
+
+        <p>{message.description}</p>
       </div>
 
       <button onClick={() => removeToast(message.id)} type="button">
