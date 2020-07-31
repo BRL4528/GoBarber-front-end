@@ -60,6 +60,16 @@ const AuthProvider: React.FC = ({ children }) => {
     setData({} as AuthState);
   }, []);
 
+  // const updateUser = useCallback((user: Partial<User>) => {
+  //   setData({
+  //     token: data.token,
+  //     user: {
+  //       ...data.user,
+  //       ...updateData,
+  //     },
+  //   });
+  // }, []);
+
   return (
     <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
       {children}
